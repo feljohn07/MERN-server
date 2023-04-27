@@ -101,7 +101,7 @@ const signupUser = async (req, res) => {
         // if user exists, return and create a token
         if(exist) {
           const token = createToken(exist._id, exist.email)
-          res.status(200).json({ email, token })
+          res.status(200).json({ email, token, picture: data.picture, firstname: exist.firstname, lastname: exist.lastname })
 
         }else{
 
@@ -111,7 +111,7 @@ const signupUser = async (req, res) => {
           const user = await User.signup( data.given_name, data.family_name, data.email, defaultPassword )
           // create a token
           const token = createToken(user._id, user.email)
-          res.status(200).json({ email, token, picture: data.picture })
+          res.status(200).json({ email, token, picture: data.picture, firstname: exist.firstname, lastname: exist.lastname })
         }
 
       })
@@ -126,7 +126,7 @@ const signupUser = async (req, res) => {
       // create a token
       const token = createToken(user._id)
 
-      res.status(200).json({email, token})
+      res.status(200).json({email, token, firstname: user.firstname, lastname: user.lastname})
     } catch (error) {
 
       console.log(error)
