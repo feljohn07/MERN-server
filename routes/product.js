@@ -44,6 +44,8 @@ const {
 
 const {
     inventoryStatus,
+    purchasesChart,
+    ordersChart,
 } = require('../controllers/dashboardController')
  
 
@@ -85,6 +87,8 @@ productRoutes.route("/order/update/:id").post(updateOrder);
 productRoutes.route("/order/delete/:id").delete(deleteOrder);
 
 productRoutes.route("/dashboard").get(inventoryStatus);
+productRoutes.route("/dashboard/purchases").get(purchasesChart);
+productRoutes.route("/dashboard/orders").get(ordersChart);
 
 
 module.exports = productRoutes;
